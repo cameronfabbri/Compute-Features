@@ -1,6 +1,13 @@
 # Compute-Features
 Computes features for images using various pretrained Tensorflow models
 
+# Usage
+Download one of the checkpoint files below, for example inception_v1.
+
+`tar -xvf inception_v1_2016_08_28.tar.gz`
+
+`python compute_features.py --data_dir=images/ --checkpoint_file=inception_v1.ckpt --model=inception_v1`
+
 # Pre-trained Models
 
 These CNNs have been trained on the [ILSVRC-2012-CLS](http://www.image-net.org/challenges/LSVRC/2012/)
