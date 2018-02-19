@@ -60,7 +60,7 @@ if __name__ == '__main__':
       from inception_v1 import *
       arg_scope = inception_v1_arg_scope()
       with slim.arg_scope(arg_scope):
-         logits, end_points = inception_v1(x, is_training=False)
+         logits, end_points = inception_v1(x, is_training=False, num_classes=1001)
          features = end_points['AvgPool_0a_7x7']
    elif model == 'vgg19':
       from vgg import *
