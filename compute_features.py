@@ -39,15 +39,6 @@ def getPaths(data_dir):
                image_paths.append(fname_)
    return image_paths
 
-'''
-
-   Gets the arg scope, imports, etc for the model specified.
-
-'''
-def getParams(model):
-
-
-
 if __name__ == '__main__':
    parser = argparse.ArgumentParser()
    parser.add_argument('--data_dir', required=True, type=str, help='Directory images are in. Searches recursively.')
@@ -55,43 +46,41 @@ if __name__ == '__main__':
    parser.add_argument('--checkpoint_file', required=True, type=str, help='Model file')
    a = parser.parse_args()
 
-   data_dir   = a.data_dir
-   model      = a.model
+   data_dir        = a.data_dir
+   model           = a.model
    checkpoint_file = a.checkpoint_file
-
-   paths = getPaths(data_dir)
    
-   # change theses as needed
-   height   = 224
-   width    = 224
-   channels = 3
+   if model == 'inception_v1': height, width, channels = 224, 224, 3
+   if model == 'vgg19':        height, width, channels = 224, 224, 3
 
    x = tf.placeholder(tf.float32, shape=(1, height, width, channels))
-
-   sess = tf.Session()
-
-   # set up model specific stuff
-   if model == 'vgg19':
+   
+   # load up model specific stuff
+   if model == 'inception_v1':
+      from inception_v1 import *
+      arg_scope = inception_v1_arg_scope()
+      with slim.arg_scope(arg_scope):
+         logits, end_points = inception_v1(x, is_training=False)
+         features = end_points['AvgPool_0a_7x7']
+   elif model == 'vgg19':
       from vgg import *
       arg_scope = vgg_arg_scope()
+      with slim.arg_scope(arg_scope):
+         logits, end_points = vgg_19(x, is_training=False)
+         features = end_points['vgg_19/fc8']
 
-   with slim.arg_scope(arg_scope):
-      logits, end_points = vgg_19(x, is_training=False)
-      features = end_points['vgg_19/fc8']
-
+   sess  = tf.Session()
    saver = tf.train.Saver()
    saver.restore(sess, checkpoint_file)
 
    feat_dict = {}
-
+   paths = getPaths(data_dir)
    print 'Computing features...'
    for path in tqdm(paths):
       image = misc.imread(path)
       image = misc.imresize(image, (height, width))
       image = np.expand_dims(image, 0)
-
       feat = np.squeeze(sess.run(features, feed_dict={x:image}))
-
       feat_dict[path] = feat
 
    exp_pkl = open('features.pkl', 'wb')
