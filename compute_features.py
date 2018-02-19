@@ -19,6 +19,11 @@ sys.path.insert(0, 'nets/')
 
 slim = tf.contrib.slim
 
+'''
+
+   Recursively obtains all images in the directory specified
+
+'''
 def getPaths(data_dir):
       
    image_paths = []
@@ -33,6 +38,15 @@ def getPaths(data_dir):
                fname_ = os.path.join(d,filename)
                image_paths.append(fname_)
    return image_paths
+
+'''
+
+   Gets the arg scope, imports, etc for the model specified.
+
+'''
+def getParams(model):
+
+
 
 if __name__ == '__main__':
    parser = argparse.ArgumentParser()
@@ -84,4 +98,3 @@ if __name__ == '__main__':
    data = pickle.dumps(feat_dict)
    exp_pkl.write(data)
    exp_pkl.close()
-   
