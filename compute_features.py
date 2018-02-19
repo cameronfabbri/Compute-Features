@@ -5,9 +5,9 @@
 
 '''
 
-import tensorflow as tf
 import scipy.misc as misc
 import cPickle as pickle
+import tensorflow as tf
 from tqdm import tqdm
 import numpy as np
 import argparse
