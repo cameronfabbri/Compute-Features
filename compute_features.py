@@ -85,7 +85,7 @@ if __name__ == '__main__':
       from resnet_v1 import *
       arg_scope = resnet_arg_scope()
       with slim.arg_scope(arg_scope):
-         logits, end_points = resnet_v1_50(x, is_training=False, num_classes=1001)
+         logits, end_points = resnet_v1_50(x, is_training=False, num_classes=1000)
          features = end_points['global_pool']
    elif model == 'vgg_19':
       from vgg import *
