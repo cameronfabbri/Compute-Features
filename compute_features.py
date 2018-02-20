@@ -51,6 +51,7 @@ if __name__ == '__main__':
    checkpoint_file = a.checkpoint_file
    
    if model == 'inception_v1': height, width, channels = 224, 224, 3
+   if model == 'inception_v2': height, width, channels = 224, 224, 3
    if model == 'vgg19':        height, width, channels = 224, 224, 3
 
    x = tf.placeholder(tf.float32, shape=(1, height, width, channels))
@@ -62,7 +63,13 @@ if __name__ == '__main__':
       with slim.arg_scope(arg_scope):
          logits, end_points = inception_v1(x, is_training=False, num_classes=1001)
          features = end_points['AvgPool_0a_7x7']
-   elif model == 'vgg19':
+   elif model == 'inception_v2':
+      from inception_v2 import *
+      arg_scope = inception_v2_arg_scope()
+      with slim.arg_scope(arg_scope):
+         logits, end_points = inception_v2(x, is_training=False, num_classes=1001)
+         features = end_points['AvgPool_1a']
+   elif model == 'vgg_19':
       from vgg import *
       arg_scope = vgg_arg_scope()
       with slim.arg_scope(arg_scope):
