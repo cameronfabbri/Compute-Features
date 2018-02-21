@@ -4,11 +4,11 @@ the final fully connected layer (e.g. fc7 for Alexnet, fc8 for VGG_19, etc.). Th
 various applications such as classification, clustering, etc.
 
 # Usage
-Download one of the checkpoint files below, for example Inception V1.
+Download one of the checkpoint files below, for example [Inception V1](http://download.tensorflow.org/models/inception_v1_2016_08_28.tar.gz).
 
 ```
 tar -xvf inception_v1_2016_08_28.tar.gz
-python compute_features.py --data_dir=images/ --checkpoint_file=inception_v1.ckpt --model=inception_v1
+python compute_features.py --data_dir=test_images/ --checkpoint_file=inception_v1.ckpt --model=inception_v1
 ```
 
 The output will be in `inception_v1_features.pkl`, which contains a dictionary of the form {image_path:feature}.
