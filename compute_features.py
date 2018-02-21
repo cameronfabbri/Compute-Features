@@ -49,10 +49,12 @@ if __name__ == '__main__':
    data_dir        = a.data_dir
    model           = a.model
    checkpoint_file = a.checkpoint_file
-   
+  
+
+   # I only have these because I thought some take in size of (299,299), but maybe not
    if 'inception' in model: height, width, channels = 224, 224, 3
-   if 'resnet' in model: height, width, channels = 224, 224, 3
-   if model == 'vgg19':        height, width, channels = 224, 224, 3
+   if 'resnet' in model:    height, width, channels = 224, 224, 3
+   if 'vgg' in model:       height, width, channels = 224, 224, 3
 
    x = tf.placeholder(tf.float32, shape=(1, height, width, channels))
    
@@ -93,6 +95,12 @@ if __name__ == '__main__':
       with slim.arg_scope(arg_scope):
          logits, end_points = resnet_v1_101(x, is_training=False, num_classes=1000)
          features = end_points['global_pool']
+   elif model == 'vgg_16':
+      from vgg import *
+      arg_scope = vgg_arg_scope()
+      with slim.arg_scope(arg_scope):
+         logits, end_points = vgg_16(x, is_training=False)
+         features = end_points['vgg_16/fc8']
    elif model == 'vgg_19':
       from vgg import *
       arg_scope = vgg_arg_scope()
