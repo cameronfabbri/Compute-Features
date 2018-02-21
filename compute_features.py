@@ -56,6 +56,8 @@ if __name__ == '__main__':
    if 'resnet' in model:    height, width, channels = 224, 224, 3
    if 'vgg' in model:       height, width, channels = 224, 224, 3
 
+   if model == 'inception_resnet_v2': height, width, channels = 299, 299, 3
+
    x = tf.placeholder(tf.float32, shape=(1, height, width, channels))
    
    # load up model specific stuff
