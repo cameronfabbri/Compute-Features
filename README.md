@@ -6,14 +6,17 @@ various applications such as classification, clustering, etc.
 # Usage
 Download one of the checkpoint files below, for example inception_v1.
 
-`tar -xvf inception_v1_2016_08_28.tar.gz`
-
-`python compute_features.py --data_dir=images/ --checkpoint_file=inception_v1.ckpt --model=inception_v1`
+```
+tar -xvf inception_v1_2016_08_28.tar.gz
+python compute_features.py --data_dir=images/ --checkpoint_file=inception_v1.ckpt --model=inception_v1
+```
 
 The output will be in `inception_v1_features.pkl`, which contains a dictionary of the form {image_path:feature}.
 
 Look at `load_features.py` for an example of how to use the features that were computed.
 
+Some of these aren't working, such as inception_v4 due to differences in the model checkpoint and the model
+defined in the `nets/` directory. Still working on that.
 # Pre-trained Models
 
 These CNNs have been trained on the [ILSVRC-2012-CLS](http://www.image-net.org/challenges/LSVRC/2012/)
