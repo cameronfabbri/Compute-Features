@@ -4,7 +4,7 @@ the final fully connected layer (e.g. fc7 for Alexnet, fc8 for VGG_19, etc.). Th
 various applications such as classification, clustering, etc.
 
 # Usage
-Download one of the checkpoint files below, for example inception_v1.
+Download one of the checkpoint files below, for example Inception V1.
 
 ```
 tar -xvf inception_v1_2016_08_28.tar.gz
