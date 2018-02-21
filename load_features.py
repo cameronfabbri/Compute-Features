@@ -21,7 +21,8 @@ if __name__ == '__main__':
       exit()
 
    for image, feature in features.iteritems():
-      print image, ':', feature.shape
+      print image, ':', feature
+      exit()
 
       # do whatever you want with features
 

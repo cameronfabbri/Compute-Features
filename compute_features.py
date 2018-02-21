@@ -49,7 +49,6 @@ if __name__ == '__main__':
    data_dir        = a.data_dir
    model           = a.model
    checkpoint_file = a.checkpoint_file
-  
 
    # I only have these because I thought some take in size of (299,299), but maybe not
    if 'inception' in model: height, width, channels = 224, 224, 3
