@@ -21,7 +21,8 @@ Some of these aren't working, such as inception_v4 due to differences in the mod
 defined in the `nets/` directory. Still working on that.
 # Pre-trained Models
 
-You can download all models [here](https://drive.google.com/file/d/13pyno-mdbazKs0o4N_Pk8ArDtk1RcE-U/view?usp=sharing)
+You can download all models [here](https://drive.google.com/file/d/13pyno-mdbazKs0o4N_Pk8ArDtk1RcE-U/view?usp=sharing).
+Otherwise links for individual models can be found below.
 
 These CNNs have been trained on the [ILSVRC-2012-CLS](http://www.image-net.org/challenges/LSVRC/2012/)
 image classification dataset.
