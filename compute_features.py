@@ -123,7 +123,7 @@ if __name__ == '__main__':
       feat = np.squeeze(sess.run(features, feed_dict={x:image}))
       feat_dict[path] = feat
 
-   try: os.makedir('features/')
+   try: os.makedirs('features/')
    except: pass
    exp_pkl = open('features/'+model+'_features.pkl', 'wb')
    data = pickle.dumps(feat_dict)
