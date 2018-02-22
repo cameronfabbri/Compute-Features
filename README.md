@@ -15,7 +15,7 @@ The output will be in `inception_v1_features.pkl`, which contains a dictionary o
 
 Look at `load_features.py` for an example of how to use the features that were computed. For example,
 
-`python compute_features features/inception_v1_features.pkl`
+`python load_features.py features/inception_v1_features.pkl`
 
 Some of these aren't working, such as inception_v4 due to differences in the model checkpoint and the model
 defined in the `nets/` directory. Still working on that.
