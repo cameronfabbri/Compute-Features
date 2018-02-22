@@ -125,7 +125,7 @@ if __name__ == '__main__':
 
    try: os.makedir('features/')
    except: pass
-   exp_pkl = open('features/'model+'_features.pkl', 'wb')
+   exp_pkl = open('features/'+model+'_features.pkl', 'wb')
    data = pickle.dumps(feat_dict)
    exp_pkl.write(data)
    exp_pkl.close()
