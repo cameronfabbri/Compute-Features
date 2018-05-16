@@ -1,4 +1,5 @@
 # Compute-Features
+## Smaller
 Computes features for images using various pretrained Tensorflow models. For each model, this will output
 the final fully connected layer (e.g. fc7 for Alexnet, fc8 for VGG_19, etc.). These can be used within
 various applications such as classification, clustering, etc.
